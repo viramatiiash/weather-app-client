@@ -1,0 +1,25 @@
+@use 'variables' as *;
+
+@mixin DESKTOP() {
+  @media (min-width: $MB_DESKTOP) {
+    @content;
+  }
+}
+
+@mixin TABLET() {
+  @media (min-width: $MB_TABLET) {
+    @content;
+  }
+}
+
+@mixin MOBILE() {
+  @media (min-width: $MB_MOBILE) {
+    @content;
+  }
+}
+
+@mixin CUSTOM($CUSTOM) {
+  @media (min-width: $CUSTOM) {
+    @content;
+  }
+}

@@ -1,0 +1,96 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use 'typography' as *;
+@use 'media-breakpoints' as *;
+
+
+// Flex
+@mixin flex(
+  $justify: center,
+  $align: center,
+  $direction: row,
+  $gap: 0,
+  $wrap: nowrap
+) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  gap: $gap;
+  flex-wrap: $wrap;
+}
+
+// Grid
+@mixin grid($columns: auto-fit, $rows: auto,  $rowGap: 0px, $columnGap: 0px) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  grid-template-rows: repeat($rows, auto);
+  row-gap: $rowGap;
+  column-gap: $columnGap;
+}
+
+// Typography By Breakpoint
+@mixin typography-by-breakpoint($typography, $breakpoint) {
+  @if map.has-key($typography, $breakpoint) {
+    $map: map.get($typography, $breakpoint);
+
+    font-size: map.get($map, font-size);
+    font-weight: map.get($map, font-weight);
+    line-height: map.get($map, line-height);
+
+    @if map.has-key($map, text-decoration) {
+      text-decoration: map.get($map, text-decoration);
+    }
+
+    @if map.has-key($map, text-decoration-skip-ink) {
+      text-decoration-skip-ink: map.get($map, text-decoration-skip-ink);
+    }
+  }
+}
+
+@mixin typography($variantByBreakpoint) {
+    @if meta.type-of($variantByBreakpoint) == 'string' {
+        $typography: map.get($typography-map, $variantByBreakpoint);
+
+        @include typography-by-breakpoint($typography, mobile);
+
+        @include TABLET {
+            @include typography-by-breakpoint($typography, tablet);
+        }
+
+        @include DESKTOP {
+            @include typography-by-breakpoint($typography, desktop);
+        }
+    } @else if meta.type-of($variantByBreakpoint) == 'map' {
+        $mobile-variant: map.get($variantByBreakpoint, mobile);
+        $tablet-variant: map.get($variantByBreakpoint, tablet);
+        $desktop-variant: map.get($variantByBreakpoint, desktop);
+
+        @if $mobile-variant {
+            $typography: map.get($typography-map, $mobile-variant);
+            @include typography-by-breakpoint($typography, mobile);
+        }
+
+        @if $tablet-variant == null {
+            $tablet-variant: $mobile-variant;
+        }
+
+        @if $tablet-variant {
+            $typography: map.get($typography-map, $tablet-variant);
+            @include TABLET {
+                @include typography-by-breakpoint($typography, tablet);
+            }
+        }
+
+        @if $desktop-variant == null {
+            $desktop-variant: $tablet-variant;
+        }
+
+        @if $desktop-variant {
+            $typography: map.get($typography-map, $desktop-variant);
+            @include DESKTOP {
+                @include typography-by-breakpoint($typography, desktop);
+            }
+        }
+    }
+}

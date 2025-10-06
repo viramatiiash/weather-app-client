@@ -1,0 +1,38 @@
+// ? Fonts
+// Font Families
+$FF_MAIN: "Kodchasan", sans-serif;
+$FF_SECONDARY: "Inter", sans-serif;
+
+// Font sizes
+$FS_MAIN: 16px;
+
+// Font weights
+$FW_LIGHT: 300;
+$FW_REGULAR: 400;
+$FW_MEDIUM: 500;
+$FW_SEMIBOLD: 600;
+$FW_BOLD: 700;
+
+// ? Colors
+$C_TEXT: #ffffff;
+$C_CARD: rgba(92, 92, 92, 0.3);
+$C_BTN_HOVER: #FFA04D;
+$C_BTN_ACTIVE: #f67401;
+
+// ? Transition
+$TRANSITION: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+// ? Blur
+$BLUR: 10px;
+
+// ? Box Shadow
+$BOX_SHADOW: 0 2px 10px rgba(0, 0, 0, 0.25);
+
+// ? Border Radius
+$BR_CARD: 10px;
+$BR_INPUT: 2px;
+
+// ? Media Queries: Breakpoints
+$MB_MOBILE: 400px;
+$MB_TABLET: 768px;
+$MB_DESKTOP: 1200px;
