@@ -16,8 +16,11 @@ $FW_BOLD: 700;
 // ? Colors
 $C_TEXT: #ffffff;
 $C_CARD: rgba(92, 92, 92, 0.3);
+$C_LOADING: rgba(0, 0, 0, 0.5);
 $C_BTN_HOVER: #FFA04D;
 $C_BTN_ACTIVE: #f67401;
+$C_EMPTY_STATE: rgba(246, 116, 1, 0.5);
+$C_ERROR: rgba(255, 0, 0, 0.5);
 
 // ? Transition
 $TRANSITION: 0.35s cubic-bezier(0.4, 0, 0.2, 1);

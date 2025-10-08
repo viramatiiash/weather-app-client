@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
 
 export default defineConfig({
-  base: "/weather-app/",
+  base: "/weather-app-client/",
   plugins: [
     react(),
     svgr({
@@ -16,8 +16,10 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
+      "@UI": "/src/components/UI",
+      "@services": "/src/services",
+      "@interfaces": "/src/interfaces",
       "@assets": "/src/assets",
-      "@images": "/src/assets/images",
       "@": "/src/",
       "@styles": "/src/styles",
       "@icons": "/src/assets/icons",

@@ -1,4 +1,4 @@
-const weatherVideos = new Map([
+const weatherVideos = new Map<string, string>([
   ["thunderstorm", "thunderstorm.mp4"],
   ["drizzle", "drizzle.mp4"],
   ["rain", "rain.mp4"],
@@ -16,11 +16,15 @@ const weatherVideos = new Map([
   ["clear", "clear-sky.mp4"],
 ]);
 
-const getDeviceType = () => (window.innerWidth <= 480 ? "mobile" : "desktop");
+const getDeviceType = (): "mobile" | "desktop" =>
+  window.innerWidth <= 480 ? "mobile" : "desktop";
 
-export function getWeatherVideo(main, icon) {
+export function getWeatherVideo(
+  main: string | undefined,
+  icon?: string
+): string {
   const deviceType = getDeviceType();
-  const folderPath = `/videos/${deviceType}`;
+  const folderPath = `${import.meta.env.BASE_URL}videos/${deviceType}`;
 
   if (!main) {
     const fileName =

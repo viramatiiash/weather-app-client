@@ -1,0 +1,29 @@
+@use "@styles/index" as *;
+
+.emptyContainer {
+  @include flex($gap: 14px);
+  padding: 20px;
+  width: 95%;
+  border-radius: $BR_CARD;
+  box-shadow: $BOX_SHADOW;
+  position: relative;
+  overflow: hidden;
+  background-color: $C_EMPTY_STATE;
+  z-index: 1;
+
+  @include MOBILE {
+    width: 100%;
+    max-width: 370px;
+  }
+
+  .questionIcon {
+    width: 30px;
+    height: 30px;
+    color: $C_TEXT;
+  }
+
+  .questionText {
+    @include typography("text");
+    color: $C_TEXT;
+  }
+}

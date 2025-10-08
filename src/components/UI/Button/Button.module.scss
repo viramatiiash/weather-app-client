@@ -1,0 +1,24 @@
+@use "@styles/index" as *;
+
+.button {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: $BR_INPUT;
+  border: 1px solid $C_TEXT;
+  padding: 10px 8px;
+  color: $C_TEXT;
+  transition: $TRANSITION;
+
+  &:hover {
+    border-color: $C_BTN_HOVER;
+    color: $C_BTN_HOVER;
+  }
+
+  &:active {
+    transition: none;
+    border-color: $C_BTN_ACTIVE;
+    color: $C_BTN_ACTIVE;
+  }
+}

@@ -1,6 +1,10 @@
 import styles from "./Video.module.scss";
 
-export const Video = ({ videoSrc }) => {
+interface VideoProps {
+  videoSrc: string;
+}
+
+export const Video: React.FC<VideoProps> = ({ videoSrc }) => {
   return (
     <video autoPlay loop muted playsInline className={styles.backgroundVideo}>
       <source src={videoSrc} type="video/mp4" />
